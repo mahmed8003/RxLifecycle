@@ -20,13 +20,18 @@ public class MainActivity extends RxActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        disposeOnResume();
+        disposeOnDestroy();
+    }
 
+
+    private void disposeOnResume() {
         Disposable d = Observable
                 .interval(1, TimeUnit.SECONDS)
                 .subscribeWith(new DisposableObserver<Long>() {
                     @Override
                     public void onNext(Long value) {
-                        Log.d(TAG, value.toString() + " Seconds");
+                        Log.d(TAG, "Timer A:" + value.toString() + " Seconds");
                     }
 
                     @Override
@@ -41,8 +46,36 @@ public class MainActivity extends RxActivity {
                 });
 
         /*
-         * Dispose observer on ActivityEvent.DESTROY
+         * Dispose observer on ActivityEvent.RESUME
          */
-        dispose(d, ActivityEvent.DESTROY);
+        dispose(d, ActivityEvent.RESUME);
     }
+
+    private void disposeOnDestroy() {
+        Disposable d = Observable
+                .interval(1, TimeUnit.SECONDS)
+                .subscribeWith(new DisposableObserver<Long>() {
+                    @Override
+                    public void onNext(Long value) {
+                        Log.d(TAG, "Timer B:" + value.toString() + " Seconds");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG, "onError", e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "onComplete");
+                    }
+                });
+
+        /*
+         * Dispose observer
+         */
+        dispose(d);
+    }
+
+
 }
