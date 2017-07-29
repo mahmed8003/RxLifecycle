@@ -1,4 +1,3 @@
-# Lifecycle handling APIs for Android apps using RxJava2
 # RxLifecycle
 This library handles disposing of Observer on different lifecycle events.
 # Usage
@@ -40,3 +39,12 @@ or if you want to dispose Disposable "d" on a opposing lifecycle event - e.g., i
 this.dispose(d);
 ```
 # Installation
+```script
+maven { url "https://jitpack.io" }
+```
+and:
+```script
+dependencies {
+    compile 'com.github.mahmed8003:RxLifecycle:0.0.1'
+}
+```
