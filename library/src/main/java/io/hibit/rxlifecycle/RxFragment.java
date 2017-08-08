@@ -98,7 +98,7 @@ public abstract class RxFragment extends Fragment {
      * @param disposable
      * @param event
      */
-    protected final void dispose(Disposable disposable, FragmentEvent event) {
+    public final void dispose(Disposable disposable, FragmentEvent event) {
         addDisposable(disposable, event);
     }
 
@@ -106,7 +106,7 @@ public abstract class RxFragment extends Fragment {
      * Dispose a subscriber on alternative event
      * @param disposable
      */
-    protected final void dispose(Disposable disposable) {
+    public final void dispose(Disposable disposable) {
         final FragmentEvent lastEvent = this.lastEvent;
         FragmentEvent event = null;
         switch (lastEvent) {

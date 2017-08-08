@@ -66,7 +66,7 @@ public abstract class RxActivity extends Activity {
      * @param disposable
      * @param event
      */
-    protected final void dispose(Disposable disposable, ActivityEvent event) {
+    public final void dispose(Disposable disposable, ActivityEvent event) {
         addDisposable(disposable, event);
     }
 
@@ -74,7 +74,7 @@ public abstract class RxActivity extends Activity {
      * Dispose a subscriber on alternative event
      * @param disposable
      */
-    protected final void dispose(Disposable disposable) {
+    public final void dispose(Disposable disposable) {
         final ActivityEvent lastEvent = this.lastEvent;
         ActivityEvent event = null;
         switch (lastEvent) {
