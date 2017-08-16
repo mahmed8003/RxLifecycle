@@ -45,6 +45,6 @@ maven { url "https://jitpack.io" }
 and:
 ```script
 dependencies {
-    compile 'com.github.mahmed8003:RxLifecycle:0.0.3'
+    compile 'com.github.mahmed8003:RxLifecycle:0.0.4'
 }
 ```
